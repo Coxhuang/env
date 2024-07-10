@@ -6,6 +6,4 @@ git clone --depth 1 https://github.com/wting/autojump.git ~/.oh-my-zsh/custom/pl
 git clone --depth 1 https://github.com/zsh-users/zsh-completions.git ~/.oh-my-zsh/custom/plugins/zsh-completions
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
 
-pushd ~/.oh-my-zsh/custom/plugins/autojump
-git checkout perf-install-script
-python3 install.py
+cd ~/.oh-my-zsh/custom/plugins/autojump && python3 install.py
