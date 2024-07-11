@@ -31,7 +31,10 @@ tar -zxvf tmux-${TMUX_VERSION}.tar.gz
 
 cd tmux-${TMUX_VERSION}
 
-./configure && make -j$(nproc) && sudo make install
+# Mac M1 ./configure --enable-utf8proc (https://github.com/minhanghuang/env/issues/9)
+./configure
+
+make -j$(nproc) && sudo make install
 
 cd .. && rm -rf tmux-${TMUX_VERSION} tmux-${TMUX_VERSION}.tar.gz
 
