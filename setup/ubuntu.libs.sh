@@ -19,7 +19,7 @@ sudo apt install -y \
 
 # install C++ dependence
 sudo apt install -y \
-  pkg-config autoconf automake cmake make ninja-build g++ gdb cgdb clang clang-format \
+  pkg-config autoconf automake cmake make ninja-build g++ gdb cgdb clangd clang-format \
   llvm bear valgrind apport
 
 # install tools

@@ -2,10 +2,13 @@
 
 set -e
 
+VERSION="3.30.0"
+
 uNames=`uname -s`
 osName=${uNames: 0: 4}
+uArch=$(uname -m)
 
-VERSION="3.30.0"
+echo uNames
 
 if [ "$osName" == "Darw" ]
   then
@@ -25,14 +28,14 @@ elif [ "$osName" == "Linu" ]
   then
     echo "GNU/Linux"
     # 二进制安装
-    rm -rf cmake-$VERSION-linux-x86_64.tar.gz
-    wget https://github.com/Kitware/CMake/releases/download/v$VERSION/cmake-$VERSION-linux-x86_64.tar.gz
-    tar -zxvf cmake-$VERSION-linux-x86_64.tar.gz
-    sudo cp -r cmake-$VERSION-linux-x86_64/bin/* /usr/local/bin
-    sudo cp -r cmake-$VERSION-linux-x86_64/doc/* /usr/local/doc
-    sudo cp -r cmake-$VERSION-linux-x86_64/share/* /usr/local/share
-    rm -rf cmake-$VERSION-linux-x86_64
-    rm -rf cmake-$VERSION-linux-x86_64.tar.gz
+    rm -rf cmake-$VERSION-linux-$uArch.tar.gz
+    wget https://github.com/Kitware/CMake/releases/download/v$VERSION/cmake-$VERSION-linux-$uArch.tar.gz
+    tar -zxvf cmake-$VERSION-linux-$uArch.tar.gz
+    sudo cp -r cmake-$VERSION-linux-$uArch/bin/* /usr/local/bin
+    sudo cp -r cmake-$VERSION-linux-$uArch/doc/* /usr/local/doc
+    sudo cp -r cmake-$VERSION-linux-$uArch/share/* /usr/local/share
+    rm -rf cmake-$VERSION-linux-$uArch
+    rm -rf cmake-$VERSION-linux-$uArch.tar.gz
     cmake --version
     else
   echo "unknown os :" $osName
