@@ -2,7 +2,7 @@
 
 set -e
 
-VERSION="3.30.0"
+VERSION="3.22.0"
 
 uNames=`uname -s`
 osName=${uNames: 0: 4}
@@ -15,15 +15,16 @@ if [ "$osName" == "Darw" ]
     echo "Mac OS X"
     # 源码安装
     DIR=cmake-$VERSION
-    wget https://github.com/Kitware/CMake/releases/download/v$VERSION/cmake-$VERSION.tar.gz
+    if [ ! -e cmake-$VERSION.tar.gz ]; then
+        wget https://github.com/Kitware/CMake/releases/download/v$VERSION/cmake-$VERSION.tar.gz
+    fi
     tar -zxvf cmake-$VERSION.tar.gz
-    pushd $DIR
+    cd $DIR
     ./bootstrap
-    make -j$(nproc)
+    make $(($(nproc) - 1))
     sudo make install
     cmake --version
-    popd
-    rm -rf $DIR
+    cd .. && rm -rf $DIR cmake-$VERSION.tar.gz
 elif [ "$osName" == "Linu" ]
   then
     echo "GNU/Linux"
@@ -37,7 +38,7 @@ elif [ "$osName" == "Linu" ]
     rm -rf cmake-$VERSION-linux-$uArch
     rm -rf cmake-$VERSION-linux-$uArch.tar.gz
     cmake --version
-    else
+else
   echo "unknown os :" $osName
   exit 8
 fi
