@@ -128,9 +128,11 @@ alias infra-du18='ssh -p 31800 -o ServerAliveInterval=60 trunk@10.11.1.15'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+proxy_domain='127.0.0.1'
+
 proxy_export() {
-    export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
-    echo "Proxy settings enabled."
+    export https_proxy=http://$proxy_domain:7890 http_proxy=http://$proxy_domain:7890 all_proxy=socks5://$proxy_domain:7890
+    echo "Proxy settings enabled. " $proxy_domain
 }
 
 proxy_unset() {
