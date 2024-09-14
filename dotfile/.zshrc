@@ -126,6 +126,9 @@ alias dk-u20='ssh -p 32000 trunk@127.0.0.1'
 alias infra='ssh -o ServerAliveInterval=60 hmh@10.11.1.15'
 alias infra-du18='ssh -p 31800 -o ServerAliveInterval=60 trunk@10.11.1.15'
 
+alias lzg='lazygit'
+alias lzd='lazydocker'
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 proxy_domain='127.0.0.1'
