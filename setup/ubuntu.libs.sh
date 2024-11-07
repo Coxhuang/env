@@ -26,9 +26,10 @@ sudo apt install -y \
 sudo apt install -y htop chrony tig tree libunwind-dev curl unzip wget baobab xclip
 
 # install pulgin
-sudo apt install -y zsh git vim nodejs yarn global neofetch cppman
+sudo apt install -y zsh git vim nodejs global cppman
 if [ "$MAJOR_VERSION" -gt 18 ]; then
   # Ubuntu18以上
+  sudo apt install -y yarn neofetch
   sudo apt install -y ripgrep universal-ctags
 fi
 
